@@ -1,0 +1,24 @@
+omar
+20200679
+3.9
+gen
+ziad
+20210147
+3.5
+gen
+ahmed
+20210042
+3.3
+cs
+Mohamed
+20210077
+3.4
+CS
+Hany Mohsen
+20210055
+1.8
+DS
+Mai Adel
+20210099
+3.1
+IS
