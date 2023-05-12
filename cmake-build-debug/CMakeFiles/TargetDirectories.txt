@@ -1,0 +1,3 @@
+D:/college/second level/second semster/Data structure/final/cmake-build-debug/CMakeFiles/final.dir
+D:/college/second level/second semster/Data structure/final/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/college/second level/second semster/Data structure/final/cmake-build-debug/CMakeFiles/rebuild_cache.dir
