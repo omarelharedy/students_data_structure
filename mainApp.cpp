@@ -83,6 +83,7 @@ int main() {
                     }
                 } else if (x == 4) {
                     obj.printByID();
+                    obj.printTheCountDepStudents();
                 } else if (x == 5) {
                     break;
                 } else {
@@ -104,6 +105,7 @@ int main() {
                     obj.searchStudent();
                 } else if (x == 4) {
                     obj.printStudents();
+                    obj.printTheCountDepStudents();
                 } else if (x == 5) {
                     break;
                 } else {

@@ -23,6 +23,10 @@ public:
         this->department = department;
     }
 
+    const string &getDepartment() const {
+        return department;
+    }
+
     Student(nullptr_t pVoid) {}
 
     bool operator<(const Student &other) const {

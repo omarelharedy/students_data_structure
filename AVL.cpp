@@ -28,6 +28,7 @@ public:
 
 class AVL {
 private:
+    int cntCs=0, cntIt=0, cntIs=0,CntDs=0,CntAi=0,cntGeneral=0;
     Node *root;
     vector<string> openFile() {
         vector<string> arr;
@@ -59,6 +60,30 @@ private:
         printStudents(node->left);
         cout << node->data << endl;
         printStudents(node->right);
+    }
+    void countDepStudents(Node *node) {
+        if(node== nullptr){
+            return;
+        }
+
+        if(node->data.getDepartment()=="CS"){
+            cntCs++;
+        } else if(node->data.getDepartment()=="IT"){
+            cntIt++;
+        } else if(node->data.getDepartment()=="IS"){
+            cntIs++;
+        } else if(node->data.getDepartment()=="DS"){
+            CntDs++;
+        } else if(node->data.getDepartment()=="AI"){
+            CntAi++;
+        }
+        else if(node->data.getDepartment()=="gen"){
+            cntGeneral++;
+        }
+        countDepStudents(node->left);
+        countDepStudents(node->right);
+
+
     }
     Node *del(Node *pNode, const string &id) {
         if (pNode == nullptr) {
@@ -164,7 +189,16 @@ public:
             insert(st1);
         }
     }
-
+    void printTheCountDepStudents(){
+        countDepStudents(root);
+        cout<<"Number of students in CS: "<<cntCs<<endl;
+        cout<<"Number of students in IT: "<<cntIt<<endl;
+        cout<<"Number of students in IS: "<<cntIs<<endl;
+        cout<<"Number of students in DS: "<<CntDs<<endl;
+        cout<<"Number of students in AI: "<<CntAi<<endl;
+        cout << "Number of students in general: " << cntGeneral << endl;
+        cntCs=0;cntIs=0;cntIt=0;CntDs=0;CntAi=0;cntGeneral=0;
+    }
     void searchStudent(){
         string id;
         cout << "Enter the id of the student you want to search for: ";

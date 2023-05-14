@@ -5,7 +5,6 @@
 #include "Student.h"
 
 using namespace std;
-
 struct BST_Node {
     Student data;
     BST_Node *left;
@@ -20,7 +19,7 @@ struct BST_Node {
 class BST {
 private:
     BST_Node *root;
-
+    int cntCs=0, cntIt=0, cntIs=0,CntDs=0,CntAi=0,cntGeneral=0;
     void print(BST_Node *x) {
         if (x != nullptr) {
             print(x->left);
@@ -75,7 +74,30 @@ private:
         }
         return pNode;
     }
+    void countDepStudents(BST_Node *node) {
+        if(node== nullptr){
+            return;
+        }
 
+        if(node->data.getDepartment()=="CS"){
+            cntCs++;
+        } else if(node->data.getDepartment()=="IT"){
+            cntIt++;
+        } else if(node->data.getDepartment()=="IS"){
+            cntIs++;
+        } else if(node->data.getDepartment()=="DS"){
+            CntDs++;
+        } else if(node->data.getDepartment()=="AI"){
+            CntAi++;
+        }
+        else if(node->data.getDepartment()=="gen"){
+            cntGeneral++;
+        }
+        countDepStudents(node->left);
+        countDepStudents(node->right);
+
+
+    }
     vector<string> openFile() {
         vector<string> arr;
         string text, token;
@@ -100,10 +122,11 @@ public:
 
     void loadStudents() {
         vector<string> temp = openFile();
-        this->root = insertNode(root, Student(temp[0], temp[1], stod(temp[2]), temp[3]));
+        Student st(temp[0], temp[1], stod(temp[2]), temp[3]);
+        this->root = insertNode(root, st);
         for (int i = 4; i < temp.size(); i += 4) {
-            Student st(temp[i], temp[i + 1], stod(temp[i + 2]), temp[i + 3]);
-            insertNode(root, st);
+            Student st1(temp[i], temp[i + 1], stod(temp[i + 2]), temp[i + 3]);
+            insertNode(root, st1);
         }
     }
 
@@ -171,5 +194,15 @@ public:
 
     void delStud(const string &id) {
         root = del(root, id);
+    }
+    void printTheCountDepStudents(){
+        countDepStudents(root);
+        cout<<"Number of students in CS: "<<cntCs<<endl;
+        cout<<"Number of students in IT: "<<cntIt<<endl;
+        cout<<"Number of students in IS: "<<cntIs<<endl;
+        cout<<"Number of students in DS: "<<CntDs<<endl;
+        cout<<"Number of students in AI: "<<CntAi<<endl;
+        cout << "Number of students in general: " << cntGeneral << endl;
+        cntCs=0;cntIs=0;cntIt=0;CntDs=0;CntAi=0;cntGeneral=0;
     }
 };
