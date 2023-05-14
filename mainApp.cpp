@@ -1,7 +1,7 @@
 #include <iostream>
 #include "heap.cpp"
 #include "BST.cpp"
-
+#include "AVL.cpp"
 using namespace std;
 
 int menuMain() {
@@ -15,7 +15,7 @@ int menuMain() {
     return choice;
 }
 
-int menuBST() {
+int BST_AVLMenu() {
     int choice;
     cout << "1-Add Student\n"
             "2-Remove Student\n"
@@ -25,15 +25,32 @@ int menuBST() {
     cin >> choice;
     return choice;
 }
+int maxHeapMenu() {
+    int choice;
+    cout << "1-Add Student\n"
+            "2-Print all (sorted by GPA)\n"
+            "3-Return to main menu\n";
+    cin >> choice;
+    return choice;
+}
+int minHeapMenu() {
+    int choice;
+    cout << "1-Add Student\n"
+            "2-Print all (sorted by GPA)\n"
+            "3-Return to main menu\n";
+    cin >> choice;
+    return choice;
+}
 
 int main() {
+
     while (true) {
         int choice = menuMain();
         if (choice == 1) {
             BST obj;
             obj.loadStudents();
             while (true) {
-                int x = menuBST();
+                int x = BST_AVLMenu();
                 if (x == 1) {
                     string name, dept, id;
                     double gpa;
@@ -72,7 +89,29 @@ int main() {
                     cout << "invalid input! please try again" << endl;
                 }
             }
-        } else if (choice == 5) {
+        }else if(choice==2){
+            AVL obj;
+            obj.loadStudents();
+            while (true) {
+                int x = BST_AVLMenu();
+                if (x == 1) {
+                    obj.addStudent();
+                    cout << "Student added!" << endl;
+                } else if (x == 2) {
+                    obj.delStud();
+                    cout << "Student removed!" << endl;
+                } else if (x == 3) {
+                    obj.searchStudent();
+                } else if (x == 4) {
+                    obj.printStudents();
+                } else if (x == 5) {
+                    break;
+                } else {
+                    cout << "invalid input! please try again" << endl;
+                }
+            }
+        }
+        else if (choice == 5) {
             break;
         } else {
             cout << "invalid input! please try again" << endl;
