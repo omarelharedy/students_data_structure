@@ -15,7 +15,19 @@ private:
     string department;
 public:
     Student() = default;
-
+    Student(Student const &other){
+        this->name = other.name;
+        this->gpa=other.gpa;
+        this->id=other.id;
+        this->department = other.department;
+    };
+    Student& operator = (Student const &other){
+        this->name = other.name;
+        this->gpa=other.gpa;
+        this->id=other.id;
+        this->department = other.department;
+        return *this;
+    }
     Student(string name, string id, double gpa, string department) {
         this->name = name;
         this->id = id;
@@ -37,16 +49,16 @@ public:
         return this->gpa > other.gpa;
     }
 
-    Student &operator=(const Student &other) {
-        this->name = other.name;
-        this->id = other.id;
-        this->gpa = other.gpa;
-        this->department = other.department;
-        return *this;
-    }
-
     const string &getId() const {
         return id;
+    }
+
+    const string &getName() const {
+        return name;
+    }
+
+    const double &getGPA() const {
+        return gpa;
     }
 
     friend ostream &operator<<(ostream &out, const Student &stdu) {

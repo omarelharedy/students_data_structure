@@ -90,7 +90,7 @@ int main() {
                     cout << "invalid input! please try again" << endl;
                 }
             }
-        }else if(choice==2){
+        }else if(choice==2) {
             AVL obj;
             obj.loadStudents();
             while (true) {
@@ -110,6 +110,64 @@ int main() {
                     break;
                 } else {
                     cout << "invalid input! please try again" << endl;
+                }
+            }
+        }else if(choice==3){
+            minheap<Student>obj("inputFile.txt",100);
+            obj.heapSort(obj.size());
+            while (true) {
+                int x = minHeapMenu();
+                if (x == 1) {
+                    string name, dept, id;
+                    double gpa;
+                    cout << "Name=\n";
+                    cin.ignore();
+                    getline(cin, name, '\n');
+                    cout << "ID=\n";
+                    cin >> id;
+                    cout << "GPA=\n";
+                    cin >> gpa;
+                    cout << "Department=\n";
+                    cin >> dept;
+                    obj.min_insert(Student(name, id, gpa, dept));
+                    cout << "Student added!" << endl;
+                    obj.heapSort(obj.size());
+                } else if (x == 2) {;
+                    obj.print();
+                    obj.printTheCountDepStudents();
+                    cout<<endl;
+                } else {
+                    cout << "invalid input! please try again" << endl;
+                    break;
+                }
+            }
+        }else if(choice==4) {
+            maxheap<Student> obj("inputFile.txt", 100);
+            obj.heapSort(obj.size());
+            while (true) {
+                int x = maxHeapMenu();
+                if (x == 1) {
+                    string name, dept, id;
+                    double gpa;
+                    cout << "Name=\n";
+                    cin.ignore();
+                    getline(cin, name, '\n');
+                    cout << "ID=\n";
+                    cin >> id;
+                    cout << "GPA=\n";
+                    cin >> gpa;
+                    cout << "Department=\n";
+                    cin >> dept;
+                    obj.max_insert(Student(name, id, gpa, dept));
+                    cout << "Student added!" << endl;
+                    obj.heapSort(obj.size());
+                } else if (x == 2) {
+                    obj.print();
+                    obj.printTheCountDepStudents();
+                    cout << endl;
+                } else {
+                    cout << "invalid input! please try again" << endl;
+                    break;
                 }
             }
         }
