@@ -55,26 +55,27 @@ public:
     }
 
     void countDepStudents(int index) {
-        if(index == length){
-            return;
+        //        if(index == length){
+//            return;
+//        }
+        for (int i = 0; i < length; ++i) {
+            if(arr[i].getDepartment()=="CS"){
+                cntCs++;
+            } else if(arr[i].getDepartment()=="IT"){
+                cntIt++;
+            } else if(arr[i].getDepartment()=="IS"){
+                cntIs++;
+            } else if(arr[i].getDepartment()=="DS"){
+                CntDs++;
+            } else if(arr[i].getDepartment()=="AI"){
+                CntAi++;
+            }
+            else if(arr[i].getDepartment()=="gen"){
+                cntGeneral++;
+            }
         }
-
-        if(arr[index].getDepartment()=="CS"){
-            cntCs++;
-        } else if(arr[index].getDepartment()=="IT"){
-            cntIt++;
-        } else if(arr[index].getDepartment()=="IS"){
-            cntIs++;
-        } else if(arr[index].getDepartment()=="DS"){
-            CntDs++;
-        } else if(arr[index].getDepartment()=="AI"){
-            CntAi++;
-        }
-        else if(arr[index].getDepartment()=="gen"){
-            cntGeneral++;
-        }
-        countDepStudents(2 * index + 1);
-        countDepStudents(2 * index + 2);
+//        countDepStudents(2 * index + 1);
+//        countDepStudents(2 * index + 2);
     }
 
     void printTheCountDepStudents(){
