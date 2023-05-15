@@ -28,7 +28,6 @@ public:
         length =0;
         fstream data(filename);
         string line;
-        int index=0;
         vector<string> data_holder;
 
         if (data.fail())
@@ -39,26 +38,19 @@ public:
         while (getline(data,line))
         {
             data_holder.push_back(line);
-            //getline(data,line);
-        }
-//        for (int i = 0; i < data_holder.size(); i++) {
-//            cout<<data_holder[i]<<endl;
-//        }
 
+        }
         for (int i = 0; i < data_holder.size(); i+=4)
         {
-            //obj stu(data_holder[i],data_holder[i+1], stod(data_holder[i+2]),data_holder[i+3]);
             min_insert(obj(data_holder[i],data_holder[i+1], stod(data_holder[i+2]),data_holder[i+3]));
-            //index++;
         }
 
     }
 
-    void countDepStudents(int index) {
-        //        if(index == length){
-//            return;
-//        }
-        for (int i = 0; i < length; ++i) {
+    void countDepStudents(int index)
+    {
+        for (int i = 0; i < length; ++i)
+        {
             if(arr[i].getDepartment()=="CS"){
                 cntCs++;
             } else if(arr[i].getDepartment()=="IT"){
@@ -74,11 +66,10 @@ public:
                 cntGeneral++;
             }
         }
-//        countDepStudents(2 * index + 1);
-//        countDepStudents(2 * index + 2);
     }
 
-    void printTheCountDepStudents(){
+    void printTheCountDepStudents()
+    {
         countDepStudents(0);
         cout<<"Number of students in CS: "<<cntCs<<endl;
         cout<<"Number of students in IT: "<<cntIt<<endl;
@@ -93,16 +84,9 @@ public:
     {
         return (index - 1)/2;
     }
-//    int right(int index)
-//    {
-//        return (2 * index + 1);
-//    }
-//    int left(int index)
-//    {
-//        return (2 * index + 2);
-//    }
 
-    void min_insert(obj element){
+    void min_insert(obj element)
+    {
         if (length == capacity)
         {
             cout << "index out of range" <<endl;
@@ -126,7 +110,8 @@ public:
         if(r<n&&arr[r]>arr[max])
             max=r;
 
-        if(max != i){
+        if(max != i)
+        {
             swap(arr[i],arr[max]);
             minheapify(n,max);
         }
@@ -146,7 +131,6 @@ public:
             swap(arr[0], arr[i]);
             minheapify(i, 0);
         }
-
     }
 
     obj extractMin()
@@ -156,32 +140,19 @@ public:
         if (length == 1)
         {
             length--;
-            //root = arr[0];
             return arr[0];
         }
         root = arr[0];
         arr[0] = arr[length-1];
         length--;
-        //delete_element(length-1);
         minheapify(length,0);
         return root;
-
-    }
-
-    void min_delete(int index)
-    {
-        arr[index] = INT_MIN;
-        while (index != 0 && arr[parent(index)] > arr[index])
-        {
-            swap(arr[index], arr[parent(index)]);
-            index= parent(index);
-        }
-        extractMin();
     }
 
     void print()
     {
-        for (int i = 0; i < length; ++i) {
+        for (int i = 0; i < length; ++i)
+        {
             cout<<arr[i]<< endl;
         }
     }
@@ -216,7 +187,6 @@ public:
         length =0;
         fstream data(filename);
         string line;
-        int index=0;
         vector<string> data_holder;
 
         if (data.fail())
@@ -224,25 +194,21 @@ public:
             cout<< "loading data Failed"<<endl;
         }
 
-
         while ( getline(data,line))
         {
             data_holder.push_back(line);
-
         }
 
         for (int i = 0; i < data_holder.size(); i+=4)
         {
             max_insert(obj(data_holder[i],data_holder[i+1], stod(data_holder[i+2]),data_holder[i+3]));
-
         }
 
     }
     void countDepStudents() {
-//        if(index == length){
-//            return;
-//        }
-        for (int i = 0; i < length; ++i) {
+
+        for (int i = 0; i < length; ++i)
+        {
             if(arr[i].getDepartment()=="CS"){
                 cntCs++;
             } else if(arr[i].getDepartment()=="IT"){
@@ -258,11 +224,11 @@ public:
                 cntGeneral++;
             }
         }
-//        countDepStudents(2 * index + 1);
-//        countDepStudents(2 * index + 2);
+
     }
 
-    void printTheCountDepStudents(){
+    void printTheCountDepStudents()
+    {
         countDepStudents();
         cout<<"Number of students in CS: "<<cntCs<<endl;
         cout<<"Number of students in IT: "<<cntIt<<endl;
@@ -277,14 +243,6 @@ public:
     {
         return (index - 1)/2;
     }
-//    int right(int index)
-//    {
-//        return (2 * index + 1);
-//    }
-//    int left(int index)
-//    {
-//        return (2 * index + 2);
-//    }
 
     void max_insert(const obj& element)
     {
@@ -296,7 +254,8 @@ public:
         int index = length - 1;
         arr[index] = element;
 
-        while (index != 0 && arr[parent(index)] < arr[index]) {
+        while (index != 0 && arr[parent(index)] < arr[index])
+        {
             swap(arr[index], arr[parent(index)]);
             index= parent(index);
         }
@@ -311,7 +270,8 @@ public:
         if(r<n&&arr[r]<arr[max])
             max=r;
 
-        if(max != i){
+        if(max != i)
+        {
             swap(arr[i],arr[max]);
             maxheapify(n,max);
         }
@@ -337,7 +297,9 @@ public:
     obj extractMax()
     {
         if (length <= 0)
-            return obj("","",INT_MIN,"");;
+        {
+            return obj("", "", INT_MIN, "");
+        }
         if (length == 1)
         {
             length--;
@@ -346,31 +308,17 @@ public:
         root = arr[0];
         arr[0] = arr[length];
         length--;
-        //delete_element(length-1);
         maxheapify(length,0);
         return root;
     }
 
-    void max_delete(int index)
-    {
-        arr[index] = INT_MAX;
-        while (index != 0 && arr[parent(index)] < arr[index])
-        {
-            swap(arr[index], arr[parent(index)]);
-            index= parent(index);
-        }
-        extractMax();
-    }
-
     void print()
+    {
+        for (int i = 0; i < length; ++i)
         {
-            for (int i = 0; i < length; ++i) {
-                cout<<arr[i]<< endl;
-            }
+            cout<<arr[i]<< endl;
         }
-
-
-
+    }
 
     int size()
     {
